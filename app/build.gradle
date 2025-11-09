@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.lyciv.starlauncher'
+    namespace 'com.lyciv.star'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.lyciv.starlauncher"
+        applicationId "com.lyciv.star"
         minSdk 26
         targetSdk 34
         versionCode 1

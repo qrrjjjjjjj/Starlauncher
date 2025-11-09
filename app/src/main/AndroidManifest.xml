@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+    <!-- Kalo kamu list semua app, Android 11+ butuh ini -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" 
+
+    <!-- Media permission (opsional sesuai fitur kamu) -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
@@ -16,22 +22,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarLauncher"
         tools:targetApi="31">
-        
+
+        <!-- 1) HOME activity (launcher sesungguhnya) -->
+        <!-- NOTE:
+             - TANPA category LAUNCHER
+             - optional: taskAffinity kosong + singleTask biar nempel sebagai home task
+        -->
         <activity
             android:name="com.lyciv.star.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
-            android:stateNotNeeded="true"
+            android:taskAffinity=""
             android:theme="@style/Theme.StarLauncher">
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2) Activity untuk icon di app drawer (Settings/About, dsb) -->
+        <!-- Biar user bisa buka app dari drawer tanpa bentrok sama HOME -->
+        <activity
+            android:name="com.lyciv.star.SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.StarLauncher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            
         </activity>
-    </application>
 
+    </application>
 </manifest>
