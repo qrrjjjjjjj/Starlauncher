@@ -63,7 +63,8 @@ dependencies {
     // Core Android
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
-    
+    implementation "com.bugsnag:bugsnag-android:6.+"
+    implementation "com.bugsnag:bugsnag-android-performance:1.+"    
     // Compose
     implementation platform('androidx.compose:compose-bom:2024.02.00')
     implementation 'androidx.compose.ui:ui'
